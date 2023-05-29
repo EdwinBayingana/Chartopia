@@ -28,7 +28,16 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
 );
 
 const NavBar = () => {
-  const { activeMenu, setActiveMenu } = useStateContext();
+  const {
+    activeMenu,
+    setActiveMenu,
+    isClicked,
+    setIsClicked,
+    handleClick,
+    screenSize,
+    setScreenSize,
+  } = useStateContext();
+
   return (
     <div className="flex justify-between p-2 md:mx-6 relative">
       <NavButton
@@ -40,7 +49,6 @@ const NavBar = () => {
       <div className="flex">
         <NavButton
           title="Cart"
-          // eslint-disable-next-line no-undef
           customFunc={() => handleClick('cart')}
           color="blue"
           icon={<FiShoppingCart />}
@@ -48,7 +56,6 @@ const NavBar = () => {
         <NavButton
           title="Chat"
           dotColor="#03C9D7"
-          // eslint-disable-next-line no-undef
           customFunc={() => handleClick('chat')}
           color="blue"
           icon={<BsChatLeft />}
@@ -56,7 +63,6 @@ const NavBar = () => {
         <NavButton
           title="Notifications"
           dotColor="#03C9D7"
-          // eslint-disable-next-line no-undef
           customFunc={() => handleClick('notification')}
           color="blue"
           icon={<RiNotification3Line />}
@@ -64,7 +70,6 @@ const NavBar = () => {
         <TooltipComponent content="Profile" position="BottomCenter">
           <div
             className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg"
-            // eslint-disable-next-line no-undef
             onClick={() => handleClick('userProfile')}
           >
             <img
@@ -81,6 +86,11 @@ const NavBar = () => {
             <MdKeyboardArrowDown className="text-gray-400 text-14" />
           </div>
         </TooltipComponent>
+
+        {isClicked.cart && <Cart />}
+        {isClicked.chat && <Chat />}
+        {isClicked.notification && <Notification />}
+        {isClicked.userProfile && <UserProfile />}
       </div>
     </div>
   );
