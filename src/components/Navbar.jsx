@@ -67,7 +67,11 @@ const NavBar = () => {
             // eslint-disable-next-line no-undef
             onClick={() => handleClick('userProfile')}
           >
-            <img src={avatar} className="rounded-full w-8 h-8" />
+            <img
+              src={avatar}
+              className="rounded-full w-8 h-8"
+              alt="profile-avatar"
+            />
             <p>
               <span className="text-gra-400 text-14">Hi, </span>{' '}
               <span className="text-gray-400 font-bold ml-1 text-14">
